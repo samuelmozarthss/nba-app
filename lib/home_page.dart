@@ -24,12 +24,10 @@ class HomePage extends StatelessWidget {
       );
       teams.add(team);
     }
-    print(teams.length);
   }
 
   @override
   Widget build(BuildContext context) {
-    fetchTeams();
     return Scaffold(
       body: FutureBuilder(
           future: fetchTeams(),
@@ -40,13 +38,18 @@ class HomePage extends StatelessWidget {
                 itemCount: teams.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.all(4),
+                    margin: const EdgeInsets.only(
+                      top: 4,
+                      left: 16,
+                      right: 16,
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(8)),
                     child: ListTile(
-                      leading: Text(teams[index].name),
-                      title: Text(teams[index].abbreviation),
+                      leading: Image.network(
+                          'https://logowik.com/content/uploads/images/atlanta-hawks7500.jpg'),
+                      title: Text(teams[index].name),
                       subtitle: Text(teams[index].city),
                       trailing: Text(teams[index].division),
                     ),
